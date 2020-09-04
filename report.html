@@ -1,0 +1,531 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+</head>
+<style>
+.one-edge-shadow {
+	-webkit-box-shadow: 0 8px 6px -6px  #999999;
+	   -moz-box-shadow: 0 8px 6px -6px #999999;
+	        box-shadow: 0 8px 6px -6px #999999;
+}
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+#customers td{
+  border: 1px solid #ddd;
+  padding: 8px;
+  font-size:11px;
+  word-wrap: break-word;
+}
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+  text-align:center;
+}
+.style14 {font-family: "Roboto Condensed"; font-size: 16px; }
+
+input[type=submit] {
+  width: 100%px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+.style15 {font-family: "Roboto Condensed"}
+</style>
+
+<script>
+
+onload = function() 
+{	
+
+//document.getElementById("customers").style.visibility = "hidden";
+
+document.getElementById("loader").style.display = "none";
+
+}
+
+function loadapproached()
+{
+document.getElementById("loader").style.display = "block";
+DeleteRows();
+var script_url="https://script.google.com/macros/s/AKfycbwkZh1cqqWCF90r1hvHFoQoyT9zql2DW81fJnuehCj_R3KGCdXa/exec";
+var url = script_url+"?action=read";
+
+$.getJSON(url, function (json) 
+			{
+				flag="JSON Accessed";
+				
+				var slno=1;
+				
+				//var table = document.getElementById("myTableData");
+				var count=0;
+				for (var i = 0; i < json.records.length; i++) 
+					{
+						var C1=json.records[i].DISTRICT;
+						var C2=json.records[i].NAME_OF_HCO;
+						var C3=json.records[i].TYPE_OF_HCO;
+						var C4=json.records[i].VISITTED_BY;
+						var C5=json.records[i].P2;
+						var C6=json.records[i].P3;
+						var C7=json.records[i].AFFILIATION;
+						var C8=json.records[i].NSDC_ID;
+						
+							
+							count=count+1;
+									tr = customers.insertRow(-1);
+									var tabCell = tr.insertCell(-1);
+									tabCell.innerHTML =slno;
+									slno=slno+1;
+									tabCell = tr.insertCell(-1);
+									
+									tabCell.innerHTML =C1;
+									tabCell = tr.insertCell(-1);
+									tabCell.innerHTML =C2;
+									tabCell = tr.insertCell(-1);
+									tabCell.innerHTML =C3;
+									tabCell = tr.insertCell(-1);
+									tabCell.innerHTML =C4;
+									tabCell = tr.insertCell(-1);
+									
+									if(C7=="Completed")
+									{
+									tabCell.innerHTML =C8;
+									}
+									else
+									{
+									tabCell.innerHTML ="---";
+									}
+													
+									//console.log(C6);
+								
+							}
+							
+							document.getElementById("loader").style.display = "none";
+
+									
+	    });
+
+
+}
+
+function loadsigned()
+{
+document.getElementById("loader").style.display = "block";
+DeleteRows();
+var script_url="https://script.google.com/macros/s/AKfycbwkZh1cqqWCF90r1hvHFoQoyT9zql2DW81fJnuehCj_R3KGCdXa/exec";
+var url = script_url+"?action=read";
+
+$.getJSON(url, function (json) 
+			{
+				flag="JSON Accessed";
+				
+				var slno=1;
+				
+				//var table = document.getElementById("myTableData");
+				var count=0;
+				for (var i = 0; i < json.records.length; i++) 
+					{
+						var C1=json.records[i].DISTRICT;
+						var C2=json.records[i].NAME_OF_HCO;
+						var C3=json.records[i].TYPE_OF_HCO;
+						var C4=json.records[i].VISITTED_BY;
+						var C5=json.records[i].P2;
+						var C6=json.records[i].P3;
+						var C7=json.records[i].AFFILIATION;
+						var C8=json.records[i].NSDC_ID;
+						
+						if(C5=="Completed")
+						{
+						count=count+1;
+									tr = customers.insertRow(-1);
+									var tabCell = tr.insertCell(-1);
+									tabCell.innerHTML =slno;
+									slno=slno+1;
+									tabCell = tr.insertCell(-1);
+									
+									tabCell.innerHTML =C1;
+									tabCell = tr.insertCell(-1);
+									tabCell.innerHTML =C2;
+									tabCell = tr.insertCell(-1);
+									tabCell.innerHTML =C3;
+									tabCell = tr.insertCell(-1);
+									tabCell.innerHTML =C4;
+									tabCell = tr.insertCell(-1);
+									
+									if(C7=="Completed")
+									{
+									tabCell.innerHTML =C8;
+									}
+									else
+									{
+									tabCell.innerHTML ="---";
+									}
+
+						}
+						
+							
+																				
+								document.getElementById("loader").style.display = "none";
+
+								
+				}
+									
+	    });
+
+
+}
+
+
+function loadp3p()
+{
+document.getElementById("loader").style.display = "block";
+DeleteRows();
+var script_url="https://script.google.com/macros/s/AKfycbwkZh1cqqWCF90r1hvHFoQoyT9zql2DW81fJnuehCj_R3KGCdXa/exec";
+var url = script_url+"?action=read";
+
+$.getJSON(url, function (json) 
+			{
+				flag="JSON Accessed";
+				
+				var slno=1;
+				
+				//var table = document.getElementById("myTableData");
+				var count=0;
+				for (var i = 0; i < json.records.length; i++) 
+					{
+						var C1=json.records[i].DISTRICT;
+						var C2=json.records[i].NAME_OF_HCO;
+						var C3=json.records[i].TYPE_OF_HCO;
+						var C4=json.records[i].VISITTED_BY;
+						var C5=json.records[i].P2;
+						var C6=json.records[i].P3;
+						var C7=json.records[i].AFFILIATION;
+						var C8=json.records[i].NSDC_ID;
+						
+						
+						
+						if(C6!=="Completed" && C5=="Completed")
+						{
+						console.log(C5);
+						console.log(C6);
+						count=count+1;
+									tr = customers.insertRow(-1);
+									var tabCell = tr.insertCell(-1);
+									tabCell.innerHTML =slno;
+									slno=slno+1;
+									tabCell = tr.insertCell(-1);
+									
+									tabCell.innerHTML =C1;
+									tabCell = tr.insertCell(-1);
+									tabCell.innerHTML =C2;
+									tabCell = tr.insertCell(-1);
+									tabCell.innerHTML =C3;
+									tabCell = tr.insertCell(-1);
+									tabCell.innerHTML =C4;
+									tabCell = tr.insertCell(-1);
+									
+									if(C7=="Completed")
+									{
+									tabCell.innerHTML =C8;
+									}
+									else
+									{
+									tabCell.innerHTML ="---";
+									}
+
+						}
+						
+							
+																				
+									document.getElementById("loader").style.display = "none";
+
+								
+				}
+									
+	    });
+
+
+}
+
+function loadp3c()
+{
+document.getElementById("loader").style.display = "block";
+DeleteRows();
+var script_url="https://script.google.com/macros/s/AKfycbwkZh1cqqWCF90r1hvHFoQoyT9zql2DW81fJnuehCj_R3KGCdXa/exec";
+var url = script_url+"?action=read";
+
+$.getJSON(url, function (json) 
+			{
+				flag="JSON Accessed";
+				
+				var slno=1;
+				
+				//var table = document.getElementById("myTableData");
+				var count=0;
+				for (var i = 0; i < json.records.length; i++) 
+					{
+						var C1=json.records[i].DISTRICT;
+						var C2=json.records[i].NAME_OF_HCO;
+						var C3=json.records[i].TYPE_OF_HCO;
+						var C4=json.records[i].VISITTED_BY;
+						var C5=json.records[i].P2;
+						var C6=json.records[i].P3;
+						var C7=json.records[i].AFFILIATION;
+						var C8=json.records[i].NSDC_ID;
+						
+						
+						
+						if(C6=="Completed" && C7!="Completed")
+						{
+						console.log(C5);
+						console.log(C6);
+						count=count+1;
+									tr = customers.insertRow(-1);
+									var tabCell = tr.insertCell(-1);
+									tabCell.innerHTML =slno;
+									slno=slno+1;
+									tabCell = tr.insertCell(-1);
+									
+									tabCell.innerHTML =C1;
+									tabCell = tr.insertCell(-1);
+									tabCell.innerHTML =C2;
+									tabCell = tr.insertCell(-1);
+									tabCell.innerHTML =C3;
+									tabCell = tr.insertCell(-1);
+									tabCell.innerHTML =C4;
+									tabCell = tr.insertCell(-1);
+									
+									if(C7=="Completed")
+									{
+									tabCell.innerHTML =C8;
+									}
+									else
+									{
+									tabCell.innerHTML ="---";
+									}
+
+						}
+						
+							
+																				
+								document.getElementById("loader").style.display = "none";
+
+								
+				}
+									
+	    });
+
+
+}
+
+function loadaffiliated()
+{
+document.getElementById("loader").style.display = "block";
+
+DeleteRows();
+var script_url="https://script.google.com/macros/s/AKfycbwkZh1cqqWCF90r1hvHFoQoyT9zql2DW81fJnuehCj_R3KGCdXa/exec";
+var url = script_url+"?action=read";
+
+$.getJSON(url, function (json) 
+			{
+				flag="JSON Accessed";
+				
+				var slno=1;
+				
+				//var table = document.getElementById("myTableData");
+				var count=0;
+				for (var i = 0; i < json.records.length; i++) 
+					{
+						var C1=json.records[i].DISTRICT;
+						var C2=json.records[i].NAME_OF_HCO;
+						var C3=json.records[i].TYPE_OF_HCO;
+						var C4=json.records[i].VISITTED_BY;
+						var C5=json.records[i].P2;
+						var C6=json.records[i].P3;
+						var C7=json.records[i].AFFILIATION;
+						var C8=json.records[i].NSDC_ID;
+						
+						
+						
+						if(C7=="Completed")
+						{
+						count=count+1;
+									tr = customers.insertRow(-1);
+									var tabCell = tr.insertCell(-1);
+									tabCell.innerHTML =slno;
+									slno=slno+1;
+									tabCell = tr.insertCell(-1);
+									
+									tabCell.innerHTML =C1;
+									tabCell = tr.insertCell(-1);
+									tabCell.innerHTML =C2;
+									tabCell = tr.insertCell(-1);
+									tabCell.innerHTML =C3;
+									tabCell = tr.insertCell(-1);
+									tabCell.innerHTML =C4;
+									tabCell = tr.insertCell(-1);
+									
+									if(C7=="Completed")
+									{
+									tabCell.innerHTML =C8;
+									}
+									else
+									{
+									tabCell.innerHTML ="---";
+									}
+
+						}
+						
+							
+																				
+								document.getElementById("loader").style.display = "none";
+
+								
+				}
+									
+	    });
+
+
+}
+
+
+
+ function DeleteRows() 
+ {
+        var rowCount = customers.rows.length;
+        for (var i = rowCount - 1; i > 0; i--)
+		 {
+            customers.deleteRow(i);
+        }
+ }
+ 
+ function exports()
+{
+	var data="IIB NSDC Healthcare Skill Development Program";
+	
+	
+	exportToExcel("customers",""+data+"")
+}
+
+
+function exportToExcel(tableID, filename){
+    var downloadurl;
+    var dataFileType = 'application/vnd.ms-excel';
+    var tableSelect = document.getElementById(tableID);
+    var tableHTMLData = tableSelect.outerHTML.replace(/ /g, '%20');
+    
+    // Specify file name
+    filename = filename?filename+'.xls':'export_excel_data.xls';
+    
+    // Create download link element
+    downloadurl = document.createElement("a");
+	
+	
+	var tab_text = "<table border='2px'><tr>";
+	 tab = document.getElementById(tableID);
+	 
+        for (j = 0 ; j < tab.rows.length ; j++) 
+		{
+            tab_text = tab_text + tab.rows[j].innerHTML + "</tr>";
+        }
+        tab_text = tab_text + "</table>";
+        tab_text = tab_text.replace(/<A[^>]*>|<\/A>/g, "");//remove if u want links in your table
+        tab_text = tab_text.replace(/<img[^>]*>/gi, ""); // remove if u want images in your table
+        tab_text = tab_text.replace(/<input[^>]*>|<\/input>/gi, ""); // remove input params
+		
+		
+    
+    document.body.appendChild(downloadurl);
+    
+    if(navigator.msSaveOrOpenBlob){
+        var blob = new Blob(['\ufeff', tableHTMLData], {
+            type: dataFileType
+        });
+        navigator.msSaveOrOpenBlob( blob, filename);
+    }else{
+        // Create a link to the file
+        downloadurl.href = 'data:' + dataFileType + ', ' + encodeURIComponent(tab_text);
+    
+        // Setting the file name
+        downloadurl.download = filename;
+        
+        //triggering the function
+        downloadurl.click();
+    }
+}
+
+
+
+</script>
+
+
+<body>
+
+<div style=" height: 117px; width:100%" class="one-edge-shadow">
+  <table width="100%" height="117" border="0" style="height: inherit; text-align: right; font-family: 'RobotoCondensed Regular'; font-size: 14px;">
+    <tr>
+      <td width="289" height="113"><div align="left"><img src="IIB-logo-small.png" width="242" height="65" /></div></td>
+      <td width="17" style="text-align: center; font-family: Arial;">&nbsp;</td>
+      <td width="10" style="text-align: center"><a href="pad_assign.html" style="text-decoration: none;"> </a></td>
+      <td width="13" style="text-align: center"><a href="pad_view (All).html" style="text-decoration: none;"></a></td>
+      <td width="401" style="text-align: center"><a  href="pad_view (Priority).html" style="text-decoration: none;"></a><a href="viewforedit.html"  style="text-decoration: none;"></a></td>
+      <td width="294" bgcolor="#FFFFFF">&nbsp;</td>
+      <td width="240" bgcolor="#FFFFFF"><img src="Skill-_-NSDC-Logo-SMALL22.jpg" alt="Skillindia logo" width="238" height="113" /></td>
+    </tr>
+  </table>
+</div>
+
+<table width="100%" height="44" border="0">
+  <tr>
+    <td width="10%"><input name="Submit" type="submit" id="Submit" value="Approached" onclick="loadapproached()" /></td>
+    <td width="10%"><input name="Submit2" type="submit" id="Submit2" value="NSDC Signed" onclick="loadsigned()" /></td>
+    <td width="14%"><input name="Submit4" type="submit" id="Submit4" value="Geo Tagging Pending"  onclick="loadp3p()"  /></td>
+    <td width="25%"><input name="Submit3" type="submit" id="Submit3" value="Geo Tagging Completed and Waiting for TC ID" onclick="loadp3c()" /></td>
+    <td width="41%"><input name="Submit42" type="submit" id="Submit42" value="NSDC TC ID Received" onclick="loadaffiliated()" /></td>
+  </tr>
+</table>
+
+
+
+<table width="100%" border="1" id="customers">
+  <tr style="height:25px;">
+    <th width="9%" height="46"><span class="style14">SL NO </span></th>
+    <th width="20%"><span class="style14">DISTRICT</span></th>
+    <th width="35%"><span class="style14">NAME OF HCO </span></th>
+    <th width="12%"><span class="style14">TYPE</span></th>
+    <th width="13%"><span class="style14">VISITED BY </span></th>
+    <th width="11%"><span class="style14">NSDC TC ID </span></th>
+  </tr>
+</table>
+
+<table width="100%" border="0" id="loader">
+  <tr>
+    <td width="5%" height="81"><img  src="832.gif" alt="loading" width="67" height="67" /></td>
+    <td width="10%"><span class="style15">Loading Data .... </span></td>
+    <td width="85%">&nbsp;</td>
+  </tr>
+</table>
+<br />
+<input name="submit" type="submit" onclick="exports()"  value="Download Data" />
+</body>
+</html>
